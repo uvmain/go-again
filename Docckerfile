@@ -1,0 +1,13 @@
+FROM golang:1.23
+
+WORKDIR /app
+
+COPY go.mod ./
+COPY main.go ./
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o /go-here
+
+EXPOSE 8087
+
+# Run
+CMD ["/go-here"]
